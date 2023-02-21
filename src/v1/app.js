@@ -9,6 +9,10 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
 // TODO: init db
+// require("./databases/init.mongodb.lv0");
+require("./databases/init.mongodb");
+// const { checkOverload } = require("./helpers/check.connect");
+// checkOverload();
 
 // TODO: init routes
 app.get("/", (req, res, next) => {
