@@ -3,6 +3,7 @@ const express = require("express");
 const { default: helmet } = require("helmet");
 const morgan = require("morgan");
 const app = express();
+require("dotenv").config();
 
 // TODO: init middleware
 app.use(morgan("dev"));
