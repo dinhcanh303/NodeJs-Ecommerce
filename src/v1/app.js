@@ -1,3 +1,5 @@
+"use strict";
+
 const compression = require("compression");
 const express = require("express");
 const { default: helmet } = require("helmet");
@@ -16,11 +18,8 @@ require("./databases/init.mongodb");
 // checkOverload();
 
 // TODO: init routes
-app.get("/", (req, res, next) => {
-  return res.status(200).json({
-    message: "Welcome Node JS eCommerce",
-  });
-});
+app.use(express.json());
+app.use("/", require("./routes"));
 // TODO: handing error
 
 module.exports = app;
