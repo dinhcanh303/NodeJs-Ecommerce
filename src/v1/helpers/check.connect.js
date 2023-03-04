@@ -3,7 +3,6 @@ const { default: mongoose } = require("mongoose");
 const os = require("os");
 const process = require("process");
 
-const _SECONDS = 5000;
 const countConnect = () => {
   const numConnection = mongoose.connections.length;
   console.log(`Number of connections:${numConnection}`);

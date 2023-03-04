@@ -8,10 +8,10 @@ const createTokenPair = require("../auth/authUtils");
 const { getInfoData } = require("../utils");
 
 const RoleShop = {
-  SHOP: "00004",
-  WRITER: "00003",
-  EDITOR: "00002",
-  ADMIN: "00001",
+  SHOP: "0003",
+  WRITER: "0002",
+  EDITOR: "0001",
+  ADMIN: "0000",
 };
 class AccessService {
   static signUp = async ({ name, email, password }) => {
@@ -32,19 +32,17 @@ class AccessService {
       });
       if (newShop) {
         //created privateKey , publicKey
-        // const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
-        //   modulusLength: 4096,
-        //   publicKeyEncoding: {
-        //     type: "pkcs1",
-        //     format: "pem",
-        //   },
-        //   privateKeyEncoding: {
-        //     type: "pkcs1",
-        //     format: "pem",
-        //   },
-        // });
-        const publicKey = crypto.getRandomValues(64).toString("hex");
-        const privateKey = crypto.getRandomValues(64).toString("hex");
+        const { privateKey, publicKey } = crypto.generateKeyPairSync("rsa", {
+          modulusLength: 4096,
+          publicKeyEncoding: {
+            type: "pkcs1",
+            format: "pem",
+          },
+          privateKeyEncoding: {
+            type: "pkcs1",
+            format: "pem",
+          },
+        });
         //
         const publicKeyString = await KeyTokenService.createKeyToken({
           userId: newShop._id,

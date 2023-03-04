@@ -11,6 +11,8 @@ require("dotenv").config();
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(compression());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // TODO: init db
 // require("./databases/init.mongodb.lv0");
 require("./databases/init.mongodb");
@@ -18,7 +20,6 @@ require("./databases/init.mongodb");
 // checkOverload();
 
 // TODO: init routes
-app.use(express.json());
 app.use("/", require("./routes"));
 // TODO: handing error
 
